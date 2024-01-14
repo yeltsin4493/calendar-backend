@@ -2,7 +2,11 @@ const mongoose = require("mongoose");
 
 const dbConnection = async () => {
   try {
-    mongoose.connect(process.env.DB_CNN);
+    mongoose.connect(process.env.DB_CNN, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      tls: true, // Agregar esta línea
+    });
 
     console.log("DB ONLINE");
   } catch (error) {
